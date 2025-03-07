@@ -9,6 +9,7 @@ public class User {
     private String email;
     private String profession;
     private String experience;
+    private String skills;
 
     public User(String username, String email, String profession, String experience, String skills) {
         this.username = username;
@@ -69,8 +70,4 @@ public class User {
     public void setId(UUID id) {
         this.id = id;
     }
-
-    private String skills;
-
-
 }
