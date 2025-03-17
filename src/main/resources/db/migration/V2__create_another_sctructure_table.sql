@@ -1,4 +1,4 @@
-ALTER TABLE "user" DROP COLUMN role_id;
+ALTER TABLE users DROP COLUMN role_id;
 
 
 CREATE TABLE "post" (

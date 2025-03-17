@@ -7,6 +7,7 @@ import com.example.backend.SkillSwap.payload.response.UserResponse;
 import com.example.backend.SkillSwap.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +23,19 @@ public class UserControllerApi {
         this.userService = userService;
     }
 
-    @GetMapping("/getUsers")
+    @GetMapping("/get-users")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<UserResponse>> getUsersList() {
         List<UserResponse> listUser = userService.getUsers();
         return new ResponseEntity<>(listUser, HttpStatus.OK);
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<UserResponse> getUserByUserName(@PathVariable String username) {
+        System.out.println("Received request for username: " + username);
+
+        UserResponse userResponse = userService.getUserByUserName(username);
+        return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
     @PostMapping("/save-user")
@@ -48,8 +58,19 @@ public class UserControllerApi {
         }
     }
 
+    @GetMapping("/find-user/{idUser}")
+    public ResponseEntity<UserResponse> getUserById(@PathVariable("idUser") UUID idUser) {
+        try {
+            UserResponse user = userService.getUserById(idUser);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
-    @PutMapping("/{idUser}")
+
+    @PutMapping("/put/{idUser}")
     public ResponseEntity<String> updateUserById(@PathVariable("idUser") UUID idUser, @RequestBody UserRequest userRequest) {
         try {
             userService.updateUserById(idUser, userRequest);

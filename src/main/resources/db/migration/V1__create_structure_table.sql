@@ -1,4 +1,4 @@
-CREATE TABLE "user" (
+CREATE TABLE users (
   "id" UUID,
   "role_id" UUID,
   "username" Varchar(60) NOT NULL,

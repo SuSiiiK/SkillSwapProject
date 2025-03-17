@@ -4,6 +4,7 @@ package com.example.backend.SkillSwap.model;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 public class Post {
@@ -12,7 +13,7 @@ public class Post {
 
     private UUID userId;
 
-    private UUID tagsId;
+    private List<UUID> tagsId;
 
     private String description;
 
@@ -24,7 +25,7 @@ public class Post {
         this.id = UUID.randomUUID();
     }
 
-    public Post(UUID userId, UUID tagsId, String description, MultipartFile image, Timestamp created_at) {
+    public Post(UUID userId, List<UUID> tagsId, String description, MultipartFile image, Timestamp created_at) {
         this.userId = userId;
         this.tagsId = tagsId;
         this.description = description;
@@ -48,11 +49,11 @@ public class Post {
         this.userId = userId;
     }
 
-    public UUID getTagsId() {
+    public List<UUID> getTagsId() {
         return tagsId;
     }
 
-    public void setTagsId(UUID tagsId) {
+    public void setTagsId(List<UUID> tagsId) {
         this.tagsId = tagsId;
     }
 

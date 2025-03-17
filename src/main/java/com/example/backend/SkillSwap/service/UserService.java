@@ -15,7 +15,13 @@ public interface UserService {
 
     List<UserResponse> getUsers();
 
+    UserResponse getUserByUserName(String username);
+    UserResponse getUserById(UUID id);
+
+    User getUserByUserNameModel(String username);
+
     void deleteUserById(UUID idUser);
 
     void updateUserById(UUID id, UserRequest userRequest);
+
 }

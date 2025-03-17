@@ -6,21 +6,31 @@ public class User {
 
     private UUID id;
     private String username;
+    private String password;
     private String email;
     private String profession;
     private String experience;
     private String skills;
 
-    public User(String username, String email, String profession, String experience, String skills) {
+    public User(String username, String email, String profession, String experience, String skills, String password) {
         this.username = username;
         this.email = email;
         this.profession = profession;
         this.experience = experience;
         this.skills = skills;
+        this.password = password;
     }
 
     public User() {
         this.id = UUID.randomUUID();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getSkills() {

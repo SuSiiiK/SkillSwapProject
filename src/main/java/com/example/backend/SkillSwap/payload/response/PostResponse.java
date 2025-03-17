@@ -7,13 +7,13 @@ import java.util.UUID;
 
 public record PostResponse(
 
-        UUID userId,
+        UUID id,
 
-        UUID tagsId,
+        UUID userId,
 
         String description,
 
-        MultipartFile image,
+        byte[] image,
 
         Timestamp created_at
 ) {
