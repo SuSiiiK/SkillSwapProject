@@ -32,11 +32,9 @@ public class PostControllerApi {
     public ResponseEntity<byte[]> getAllPosts(@PathVariable UUID postId) {
         byte[] imageBytes = postService.getImageByPostId(postId);
         if (imageBytes != null) {
-            MediaType mediaType = postService.getImageMediaType(imageBytes); // Этот метод нужно будет создать для определения типа изображения
+            MediaType mediaType = postService.getImageMediaType(imageBytes);
 
-            return ResponseEntity.ok()
-                    .contentType(mediaType)
-                    .body(imageBytes);
+            return ResponseEntity.ok().contentType(mediaType).body(imageBytes);
         } else {
             return ResponseEntity.notFound().build();
         }

@@ -1,0 +1,2 @@
+ALTER TABLE "message"
+ALTER COLUMN "image" DROP NOT NULL;

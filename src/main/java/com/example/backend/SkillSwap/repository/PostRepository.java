@@ -115,13 +115,12 @@ public class PostRepository implements PostService {
 
     @Override
     public MediaType getImageMediaType(byte[] imageBytes) {
-        // Простой пример для определения типа изображения (на основе первых байтов)
         if (imageBytes[0] == (byte) 0xFF && imageBytes[1] == (byte) 0xD8) {
             return MediaType.IMAGE_JPEG;
         } else if (imageBytes[0] == (byte) 0x89 && imageBytes[1] == (byte) 0x50) {
             return MediaType.IMAGE_PNG;
         } else {
-            return MediaType.APPLICATION_OCTET_STREAM; // Если тип не определен, можно вернуть общий тип
+            return MediaType.APPLICATION_OCTET_STREAM;
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.backend.SkillSwap.utils;
 
 
-import com.example.backend.SkillSwap.controller.api.AuthController;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -16,7 +15,7 @@ import java.util.Date;
 public class JwtUtil {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
-    private String secretKey = "mySecretKey";
+    private final String secretKey = "mySecretKey";
 
     public String getSecretToken(String username) {
         return Jwts.builder()
@@ -56,5 +55,4 @@ public class JwtUtil {
     public boolean validateToken(String token, String username) {
         return (username.equals(extractUsername(token)) && !isTokenExpired(token));
     }
-
 }
